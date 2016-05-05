@@ -1,5 +1,6 @@
 require 'surveyor'
 require 'rspec/its'
+require 'rspec/collection_matchers'
 
 Dir["#{__dir__}/support/**/*.rb"].each { |file| require file }
 

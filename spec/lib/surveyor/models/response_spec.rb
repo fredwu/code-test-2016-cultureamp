@@ -14,7 +14,7 @@ RSpec.describe Surveyor::Models::Response do
 
   let(:response_data) { default_response_data }
 
-  subject { described_class.new(survey: survey, **response_data) }
+  subject(:response) { described_class.new(survey: survey, **response_data) }
 
   its(:survey)       { is_expected.to eq(survey) }
   its(:email)        { is_expected.to eq('user@example.org') }
@@ -24,13 +24,21 @@ RSpec.describe Surveyor::Models::Response do
 
   describe '#submitted?' do
     context 'yes' do
-      its(:submitted?) { is_expected.to be(true) }
+      it { is_expected.to be_submitted }
     end
 
     context 'no' do
       let(:response_data) { default_response_data.merge(submitted_at: nil) }
 
-      its(:submitted?) { is_expected.to be(false) }
+      it { is_expected.not_to be_submitted }
     end
   end
+
+  describe '#answers_by_type' do
+    subject { response.answers_by_type(:ratingquestion) }
+
+    it { is_expected.to eq([5, 5]) }
+  end
+
+  its(:answers_with_type) { is_expected.to eq([{ 'ratingquestion' => 5 } , { 'ratingquestion' => 5 }, { 'singleselect' => 'Melbourne' }]) }
 end

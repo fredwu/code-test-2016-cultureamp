@@ -1,5 +1,3 @@
-require 'surveyor/models/survey_question'
-
 module Surveyor
   module Models
     class Survey
@@ -13,6 +11,10 @@ module Surveyor
         questions_data.map do |survey_question|
           SurveyQuestion.new(**survey_question)
         end
+      end
+
+      def num_of_questions_by_type(type)
+        questions.select { |question| question.type == type.to_s }.length
       end
     end
   end

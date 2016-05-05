@@ -17,4 +17,10 @@ RSpec.describe Surveyor::Models::Survey do
       its(:text)  { is_expected.to eq('I like the kind of work I do.') }
     end
   end
+
+  describe '#num_of_questions_by_type' do
+    it 'ratingquestion' do
+      expect(subject.num_of_questions_by_type(:ratingquestion)).to eq(2)
+    end
+  end
 end

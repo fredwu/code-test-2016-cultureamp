@@ -1,5 +1,3 @@
-require 'surveyor/models/survey'
-
 module Surveyor
   module Models
     class Response
@@ -15,6 +13,21 @@ module Surveyor
 
       def submitted?
         !submitted_at.nil?
+      end
+
+      def answers_by_type(type)
+        answers_with_type.select { |answer| answer[type.to_s] }
+                         .map    { |answer| answer[type.to_s] }
+      end
+
+      private
+
+      # turn
+      #   [5, 5, "Melbourne"]
+      # into:
+      #   [{ "ratingquestion" => 5 }, { "ratingquestion" => 5 }, { "singleselect" => "Melbourne" }]
+      def answers_with_type
+        survey.questions.map(&:type).zip(answers).map { |ele| { ele[0] => ele[1] } }
       end
     end
   end
