@@ -3,14 +3,14 @@ require 'surveyor/models/survey_question'
 module Surveyor
   module Models
     class Survey
-      attr_reader :survey_questions
+      attr_reader :questions_data
 
-      def initialize(survey_questions)
-        @survey_questions = survey_questions
+      def initialize(questions_data:)
+        @questions_data = questions_data
       end
 
       def questions
-        survey_questions.map do |survey_question|
+        questions_data.map do |survey_question|
           SurveyQuestion.new(**survey_question)
         end
       end

@@ -1,1 +1,1 @@
-require 'surveyor/models/survey'
+require 'surveyor/models/response'
