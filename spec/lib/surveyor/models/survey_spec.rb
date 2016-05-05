@@ -18,9 +18,15 @@ RSpec.describe Surveyor::Models::Survey do
     end
   end
 
-  describe '#num_of_questions_by_type' do
-    it 'ratingquestion' do
-      expect(subject.num_of_questions_by_type(:ratingquestion)).to eq(2)
+  describe '#questions_by_type' do
+    subject(:rating_questions) { survey.questions_by_type(:ratingquestion) }
+
+    its(:length) { is_expected.to eq(2) }
+
+    describe 'rating question' do
+      subject { rating_questions.last }
+
+      its(:type) { is_expected.to eq('ratingquestion') }
     end
   end
 end

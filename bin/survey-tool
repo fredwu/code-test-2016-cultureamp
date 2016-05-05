@@ -2,6 +2,6 @@
 
 $LOAD_PATH.unshift File.join(__FILE__, '..', '..', 'lib')
 
-require 'application'
+require 'surveyor'
 
-Application.new.cli
+Surveyor::CLI.run

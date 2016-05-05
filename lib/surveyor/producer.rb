@@ -17,6 +17,10 @@ module Surveyor
       end
     end
 
+    def submitted_responses_count
+      submitted_responses.length
+    end
+
     private
 
     def responses
@@ -33,18 +37,14 @@ module Surveyor
       responses.select(&:submitted?)
     end
 
-    def submitted_responses_count
-      submitted_responses.length
-    end
-
     def aggregated_ratings
       submitted_responses.inject(Array.new(num_of_rating_questions, 0)) do |aggregated, response|
-        aggregated.zip(response.answers_by_type(:ratingquestion)).map { |ratings| ratings.inject(&:+) }
+        aggregated.zip(response.answers_by_type(:ratingquestion)).map { |ratings| ratings.map(&:to_i).inject(&:+) }
       end
     end
 
     def num_of_rating_questions
-      survey.num_of_questions_by_type(:ratingquestion)
+      survey.questions_by_type(:ratingquestion).length
     end
   end
 end

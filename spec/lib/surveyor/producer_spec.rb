@@ -5,11 +5,11 @@ RSpec.describe Surveyor::Producer do
 
   let(:responses_data) do
     [
-      { email: 'user1@example.org', employee_id: 42, submitted_at: '2014-07-28T20:35:41+00:00', answers: [5, 5, 'Melbourne'] },
-      { email: 'user2@example.org', employee_id: 43, submitted_at: '2014-07-29T20:35:41+00:00', answers: [4, 4, 'Sydney'] },
-      { email: 'user3@example.org', employee_id: 44, submitted_at: nil,                         answers: [4, 4, 'Sydney'] },
-      { email: 'user4@example.org', employee_id: 45, submitted_at: '2014-07-30T20:35:41+00:00', answers: [4, 1, 'Sydney'] },
-      { email: 'user5@example.org', employee_id: 46, submitted_at: '2014-07-31T20:35:41+00:00', answers: [5, 2, 'Melbourbe'] }
+      { email: 'user1@example.org', employee_id: 42, submitted_at: '2014-07-28T20:35:41+00:00', answers: ['5', '5', 'Melbourne'] },
+      { email: 'user2@example.org', employee_id: 43, submitted_at: '2014-07-29T20:35:41+00:00', answers: ['4', '4', 'Sydney'] },
+      { email: 'user3@example.org', employee_id: 44, submitted_at: nil,                         answers: ['4', '4', 'Sydney'] },
+      { email: 'user4@example.org', employee_id: 45, submitted_at: '2014-07-30T20:35:41+00:00', answers: ['4', '1', 'Sydney'] },
+      { email: 'user5@example.org', employee_id: 46, submitted_at: '2014-07-31T20:35:41+00:00', answers: ['5', '2', 'Melbourbe'] }
     ]
   end
 
@@ -33,9 +33,9 @@ RSpec.describe Surveyor::Producer do
     context 'no participants' do
       let(:responses_data) do
         [
-          { email: 'user1@example.org', employee_id: 42, submitted_at: nil, answers: [5, 5, 'Melbourne'] },
-          { email: 'user2@example.org', employee_id: 43, submitted_at: nil, answers: [4, 4, 'Sydney'] },
-          { email: 'user3@example.org', employee_id: 44, submitted_at: nil, answers: [4, 4, 'Sydney'] }
+          { email: 'user1@example.org', employee_id: 42, submitted_at: nil, answers: ['5', '5', 'Melbourne'] },
+          { email: 'user2@example.org', employee_id: 43, submitted_at: nil, answers: ['4', '4', 'Sydney'] },
+          { email: 'user3@example.org', employee_id: 44, submitted_at: nil, answers: ['4', '4', 'Sydney'] }
         ]
       end
 
@@ -45,9 +45,9 @@ RSpec.describe Surveyor::Producer do
     context 'percentage with rounding' do
       let(:responses_data) do
         [
-          { email: 'user1@example.org', employee_id: 42, submitted_at: '2014-07-28T20:35:41+00:00', answers: [5, 5, 'Melbourne'] },
-          { email: 'user2@example.org', employee_id: 43, submitted_at: '2014-07-29T20:35:41+00:00', answers: [4, 4, 'Sydney'] },
-          { email: 'user3@example.org', employee_id: 44, submitted_at: nil                        , answers: [4, 4, 'Sydney'] }
+          { email: 'user1@example.org', employee_id: 42, submitted_at: '2014-07-28T20:35:41+00:00', answers: ['5', '5', 'Melbourne'] },
+          { email: 'user2@example.org', employee_id: 43, submitted_at: '2014-07-29T20:35:41+00:00', answers: ['4', '4', 'Sydney'] },
+          { email: 'user3@example.org', employee_id: 44, submitted_at: nil, answers: ['4', '4', 'Sydney'] }
         ]
       end
 

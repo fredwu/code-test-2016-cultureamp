@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rake'
+gem 'pry'
 
 group :development, :test do
   gem 'rubocop', require: false

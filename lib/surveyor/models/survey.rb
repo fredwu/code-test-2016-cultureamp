@@ -13,8 +13,8 @@ module Surveyor
         end
       end
 
-      def num_of_questions_by_type(type)
-        questions.select { |question| question.type == type.to_s }.length
+      def questions_by_type(type)
+        questions.select { |question| question.type == type.to_s }
       end
     end
   end
