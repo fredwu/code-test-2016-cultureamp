@@ -1,5 +1,14 @@
 # Culture Amp Code Test by Fred Wu
 
+## Prerequisite
+
+- ruby 2.2+
+- bundler
+
+```bash
+bundle install
+```
+
 ## Test Suite
 
 ### Run all the tests
