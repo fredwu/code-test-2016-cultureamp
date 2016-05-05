@@ -13,7 +13,7 @@ module Surveyor
 
     def rating_question_averages
       aggregated_ratings.map do |aggregated_rating|
-        (aggregated_rating.to_f / submitted_responses_count).round(2)
+        aggregated_rating_average(aggregated_rating)
       end
     end
 
@@ -35,6 +35,12 @@ module Surveyor
 
     def submitted_responses
       responses.select(&:submitted?)
+    end
+
+    def aggregated_rating_average(aggregated_rating)
+      average = (aggregated_rating.to_f / submitted_responses_count).round(2)
+
+      average.nan? ? 'N/A' : average
     end
 
     def aggregated_ratings
