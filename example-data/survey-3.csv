@@ -1,0 +1,6 @@
+type,theme,text
+ratingquestion,The Work,I like the kind of work I do.
+ratingquestion,The Work,I have the resource I need to be effective.
+singleselect,Demographics,City
+ratingquestion,The Work,I feel empowered to get the work done for which I am responsible.
+singleselect,Demographics,Manager
